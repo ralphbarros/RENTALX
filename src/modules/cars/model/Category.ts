@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-class Category{
+class Category {
 
     id?: string;
     name: string;
@@ -8,11 +8,11 @@ class Category{
     created_at: Date;
 
 
-constructor (){
-    if(!this.id){
+    constructor (){
+        if(!this.id){
         this.id = uuidv4();
+        }
     }
-}
 }
 
 export { Category }
