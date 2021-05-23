@@ -3,6 +3,7 @@
 import { Router } from "express";
 import { SpecificationsRepository } from "../modules/cars/repositories/SpecificationsRepository";
 import { CreateSpecificationsService } from "../modules/cars/services/CreateSpecificationService";
+import { listCategoriesController } from "../modules/cars/useCases/listCategories";
 
 const specificationsRoutes = Router();
 
@@ -18,7 +19,7 @@ specificationsRoutes.post("/specifications",(request,response)=>{
 });
 
 specificationsRoutes.get("/specifications",(request,response)=>{
-    return response.json(specificationsRepository);
+    return listCategoriesController.handle(request,response);
 })
 
 export {specificationsRoutes}
