@@ -6,8 +6,6 @@ import { ListCategoriesController } from '../modules/cars/useCases/listCategorie
 
 import multer from "multer";
 
-
-
 const categoriesRoutes = Router();
 
 const upload = multer({
@@ -19,13 +17,9 @@ const importCategoryController = new ImportCategoryController();
 const listCategoriesController = new ListCategoriesController();
 
 categoriesRoutes.post("/categories/import",upload.single("file"),importCategoryController.handle) 
-   
 
 categoriesRoutes.post("/categories",createCategoryController.handle);
 
-
 categoriesRoutes.get("/",listCategoriesController.handle);
-
-
 
 export { categoriesRoutes }
