@@ -13,7 +13,7 @@ class CreateCategoryUseCase {
         private categoriesRepository: ICategoriesRepository){}
 
         async  execute( { description, name  }:IRequest ): Promise<void> {
-        console.log("cheguei use case")
+    
         const categoryAlreadyExists = await this.categoriesRepository.findByName(name);
         if(categoryAlreadyExists){
             throw new Error (" Category already exists!!" );

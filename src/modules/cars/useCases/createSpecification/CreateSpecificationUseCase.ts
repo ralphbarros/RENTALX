@@ -19,6 +19,7 @@ class CreateSpecificationsUseCase {
         if(specificationAlreadyExists){
             throw new Error (" Specification already exists!!" );
         };
+        console.log("use case especificação ")
         await this.specificationsRepository.create({name,description});
     }
 
