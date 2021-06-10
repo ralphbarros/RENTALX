@@ -22,6 +22,7 @@ class CreateSpecificationsUseCase {
         };
         console.log("use case especificação ")
         await this.specificationsRepository.create({name,description});
+        console.log("teste");
     }
 
 }
