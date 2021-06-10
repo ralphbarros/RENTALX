@@ -23,7 +23,7 @@ class CreateUserUseCase {
                 driver_license,
                 password: passwordHash,
             });
-            console.log("Criado");
+           
         }
 }
 

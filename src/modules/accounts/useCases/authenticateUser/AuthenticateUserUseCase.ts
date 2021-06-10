@@ -31,23 +31,27 @@ class AuthenticateUserUseCase{
     const user = await this.usersRepository.findByEmail(email);
 
         if(!user) {
-            throw new Error(" Email or Password Incorrect");
+            throw new Error(" Email or Password Incorrect 1");
         }
 
         const passwordMatch = await compare(password,user.password);
-        if(passwordMatch){
-            throw new Error(" Email or Password Incorrect");
+        if(!passwordMatch){
+            throw new Error(" Email or Password Incorrect 3");
         }
         const token = sign({},"698dc19d489c4e4db73e28a713eab07b",
         {
             subject:user.id,
             expiresIn:"1d"
         });
-
-    return {
-        user,
-        token
-    };
+        const tokenReturn: IResponse = {
+            token,
+            user:{
+                name: user.name,
+                email: user.email
+            }
+        }
+        console.log("teste");
+    return tokenReturn;
    }
 }
 
