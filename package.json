@@ -8,10 +8,9 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "dependencies": {
-    "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.2",
     "@types/node": "^15.6.1",
     "@types/uuid": "^8.3.0",
-    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "csv-parse": "^4.15.4",
     "express": "^4.17.1",
