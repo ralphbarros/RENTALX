@@ -17,7 +17,7 @@ constructor(){
             description,
             name
         });
-        console.log("cheguei ao respositorio especificação")
+        
         await this.repository.save(specification);
     }
 
