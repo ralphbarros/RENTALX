@@ -9,7 +9,7 @@ import { CreateSpecificationController } from "../modules/cars/useCases/createSp
 const specificationsRoutes = Router();
 const createSpecificationController = new CreateSpecificationController();
 
-specificationsRoutes.use(ensureAuthenticated)
+
 specificationsRoutes.post("/specifications",createSpecificationController.handle);
  
 specificationsRoutes.get("/specifications",(request,response)=>{
