@@ -16,14 +16,23 @@ const authHeader = request.headers.authorization;
     }
 
     const [, token] = authHeader.split(" ");
+
     try{
+
         const { sub: user_id } = verify(token,"698dc19d489c4e4db73e28a713eab07b") as IPayload;
         const usersRepository = new UsersRepository();
         const user = usersRepository.findById(user_id);
-            if(!user){
-                throw new AppError( "User does not exists !", 401 );
-            }
-        next();
+
+        if(!user){
+            throw new AppError( "User does not exists !", 401 );
+        }
+
+        request.user = {
+            id: user_id
+        }
+
+            
+         next();
     }catch{
         throw new AppError ("Invalid token !",401);
     }
