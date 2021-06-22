@@ -18,7 +18,7 @@ export class createCars1623976423005 implements MigrationInterface {
                     },
                     {
                         name: "description",
-                        type: "uuid"                        
+                        type: "varchar"                        
                     },
                     {
                         name: "daily_rate",

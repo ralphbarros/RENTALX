@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import {v4 as uuidV4 }from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import { Category } from "./Category";
 
 @Entity("cars")
@@ -42,7 +42,7 @@ created_at: Date;
     constructor(){
 
         if(!this.id){
-            this.id = uuidV4();
+            this.id = uuidv4();
             
             this.available = true;
         }
