@@ -23,7 +23,7 @@ describe("Create Rental", ()=> {
             car_id: "1212",
             expected_return_date: dayAdd24Hours,
         });
-        console.log(rental);
+        //console.log(rental);
 
         expect(rental).toHaveProperty("id");
         expect(rental).toHaveProperty("start_date");;
