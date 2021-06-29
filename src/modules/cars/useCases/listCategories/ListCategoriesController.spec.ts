@@ -1,3 +1,5 @@
+
+
 import { app } from "@shared/infra/http/app";
 
 import request from "supertest";
@@ -9,7 +11,7 @@ import {v4 as uuidV4} from "uuid";
 
 let connection: Connection;
 
-describe("Create Category Controller", () => {
+describe("List All Categories", () => {
 
     beforeAll(async ()=> {
         connection = await createConnection();
@@ -30,29 +32,8 @@ describe("Create Category Controller", () => {
         await connection.close();
     })
 
-    it("Should be able to create a new category", async()=> {
-        const responseToken = await request(app).post("/sessions").send({
-            email:"admin@rentalx.com.br",
-            password:"admin"
-        });
-
-       const { token }  = responseToken.body;
-      // console.log(responseToken.body);
-
-        const response = await request(app)
-        .post("/categories")
-        .send({
-            name: "Category supertest",
-            description: "Category Description"
-        })
-        .set({
-            Authorization: `Bearer ${token}`,
-        })
-        expect(response.status).toBe(201);
-    });
-
-    it("Should not be able to create a new category with a duplicate name", async()=> {
-        const responseToken = await request(app).post("/sessions").send({
+    it("Should be able to list all Categories", async()=> {
+      const responseToken =  await request(app).post("/sessions").send({
             email:"admin@rentalx.com.br",
             password:"admin"
         });
@@ -60,7 +41,7 @@ describe("Create Category Controller", () => {
        const { token }  = responseToken.body;
        //console.log(responseToken.body);
 
-        const response = await request(app)
+        await request(app)
         .post("/categories")
         .send({
             name: "Category supertest",
@@ -69,7 +50,16 @@ describe("Create Category Controller", () => {
         .set({
             Authorization: `Bearer ${token}`,
         })
-        expect(response.status).toBe(400);
+
+        const response = await request(app).get("/categories");
+        console.log(response.body)
+
+        expect(response.body.lenght).toBe(1);        
+        expect(response.status).toBe(200);
+        
+        
     });
+
+    
 
 })
