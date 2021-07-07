@@ -49,7 +49,7 @@ describe("Create Car",()=> {
                 category_id:"category_id",
             })
         
-        ).rejects.toBeInstanceOf(AppError)
+        ).rejects.toEqual(new AppError("Car already Exists!"))
 
 
     });
