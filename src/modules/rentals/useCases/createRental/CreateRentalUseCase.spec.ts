@@ -44,17 +44,18 @@ describe("Create Rental", ()=> {
     
 
     it("Should not to be able to create a new rental if there is another open same user", async() => {
-        await rentalsRepositoryInMemory.create({
+        const rental = await rentalsRepositoryInMemory.create({
             car_id: "1111",
             expected_return_date: dayAdd24Hours,
             user_id: "1234",
-         
+            
         })
+      //  console.log("Testando ", rental);
 
         await expect(
             createRentalUseCase.execute({
-            user_id: "12345",
-            car_id: "1212",
+            user_id: "1234",
+            car_id: "21111",
             expected_return_date: dayAdd24Hours,
         })
         ).rejects.toEqual(new AppError("There is a rental in progress for user!"))

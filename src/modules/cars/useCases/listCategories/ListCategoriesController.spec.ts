@@ -50,11 +50,11 @@ describe("List All Categories", () => {
         .set({
             Authorization: `Bearer ${token}`,
         })
-
-        const response = await request(app).get("/categories");
+        
+        const response = await request(app).get("/");
         console.log(response.body)
 
-        expect(response.body.lenght).toBe(1);        
+        expect(response.body.length).toBe(1);        
         expect(response.status).toBe(200);
         
         
